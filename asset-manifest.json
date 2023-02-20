@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/hm-18-todolist-redux/static/css/main.fba224e0.css",
+    "main.js": "/hm-18-todolist-redux/static/js/main.8679901b.js",
+    "index.html": "/hm-18-todolist-redux/index.html",
+    "main.fba224e0.css.map": "/hm-18-todolist-redux/static/css/main.fba224e0.css.map",
+    "main.8679901b.js.map": "/hm-18-todolist-redux/static/js/main.8679901b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fba224e0.css",
+    "static/js/main.8679901b.js"
+  ]
+}

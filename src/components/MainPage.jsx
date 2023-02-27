@@ -5,11 +5,11 @@ import LoginForm from "./LoginForm";
 import TodoList from "./Todo";
 
 const MainPage = () => {
-  const { isFormValid } = useSelector((state) => state.form);
+  const { isFormValid } = useSelector((state) => state.loginForm);
   return (
     <div>
       <Header />
-      {!isFormValid ? <LoginForm /> : <TodoList />}{" "}
+      {!isFormValid ? <LoginForm /> : <TodoList />}
     </div>
   );
 };

@@ -1,10 +1,11 @@
-import { combineReducers, createStore } from "redux";
-import { reducerForm } from "./authReducer";
-import { reducerTodo } from "./todoReducer";
+import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers } from "redux";
+import { authReducer, authSlice } from "./authSlice";
+import { todoReducer, todoSlice } from "./todoSlice";
 
 const reducers = combineReducers({
-  form: reducerForm,
-  todo: reducerTodo,
+  [authSlice.name]: authReducer,
+  [todoSlice.name]: todoReducer,
 });
 
-export const store = createStore(reducers);
+export const store = configureStore({ reducer: reducers });

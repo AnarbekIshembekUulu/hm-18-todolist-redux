@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { actionTypeReducerTodo } from "../store/todoReducer";
+import {  deleteTodoList, editTodoList } from "../store/todoSlice";
 
 const TodoRender = () => {
   const [edit, setEdit] = useState("");
@@ -18,9 +18,10 @@ const TodoRender = () => {
   // console.log(titleToDo);
   const dispatch = useDispatch();
   const todo = useSelector((state) => state.todo);
+  console.log(todo);
 
   const deleteHandler = (id) => {
-    dispatch({ type: actionTypeReducerTodo.DELETE_TODO, payload: id });
+    dispatch(deleteTodoList(id));
   };
 
   const editHandler = (title, idTodo) => {
@@ -32,7 +33,7 @@ const TodoRender = () => {
       id,
       value,
     };
-    dispatch({ type: actionTypeReducerTodo.EDIT_TODO, payload: idAndValue });
+    dispatch(editTodoList (idAndValue));
     setEdit((prevState) => !prevState);
   };
   return (
@@ -111,8 +112,8 @@ const ButtonDelete = styled.button`
   color: #000000;
   border-style: none;
   border-radius: 5px;
-  
-  :hover{
+
+  :hover {
     color: #ffffff;
     background-color: crimson;
   }

@@ -2,26 +2,30 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { actionTypeReducer } from "../store/authReducer";
+import { authActions } from "../store/authSlice";
 
 const LoginForm = () => {
   const [inputOnBlur, setInputOnBlur] = useState(false);
   const dispatch = useDispatch();
-  const { email, password } = useSelector((state) => state.form);
+  const { isFormValid, email, password } = useSelector(
+    (state) => state.loginForm
+  );
+  console.log(isFormValid);
+  console.log(email, password);
 
   const emailChangeHandler = (e) => {
     const emailValue = e.target.value;
-    dispatch({ type: actionTypeReducer.EMAIL, payload: emailValue });
+    dispatch(authActions.emailValidate(emailValue));
   };
 
   const passwordChangeHandler = (e) => {
     const passwordValue = e.target.value;
-    dispatch({ type: actionTypeReducer.PASSWORD, payload: passwordValue });
+    dispatch(authActions.passwordValidate(passwordValue));
   };
 
   const loginFormValid = () => {
     if (email.includes("@") && password.trim().length >= 6) {
-      return dispatch({ type: actionTypeReducer.LOGIN });
+      return dispatch(authActions.logIn());
     }
   };
 

@@ -1,19 +1,22 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { actionTypeReducer } from "../store/authReducer";
+import { authActions } from "../store/authSlice";
+// import { actionTypeReducer } from "../store/authSlice";
 
 const Header = () => {
-   const {isFormValid}=  useSelector((state)=>state.form)
-   console.log(isFormValid);
-   const dispatch=  useDispatch()
+  const { isFormValid } = useSelector((state) => state.loginForm);
+  console.log(isFormValid);
+  const dispatch = useDispatch();
   const logOutHandler = () => {
-    dispatch({type:actionTypeReducer.LOG_OUT})
+    dispatch(authActions.logOut());
   };
   return (
     <HeaderStyle>
       <p>Todo list</p>
-      <button onClick={logOutHandler} disabled={!isFormValid}>LogOut</button>
+      <button onClick={logOutHandler} disabled={!isFormValid}>
+        LogOut
+      </button>
     </HeaderStyle>
   );
 };

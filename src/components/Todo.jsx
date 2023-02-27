@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { actionTypeReducerTodo } from "../store/todoReducer";
+import { addTodoList, deleteAllTodoList } from "../store/todoSlice";
 import TodoRender from "./TodoList";
 
 const TodoList = () => {
@@ -21,13 +21,13 @@ const TodoList = () => {
   };
 
   const addTodo = () => {
-    dispatch({ type: actionTypeReducerTodo.ADD_TODO, payload: todoTitle });
+    dispatch(addTodoList(todoTitle));
     setTodo({
       title: "",
     });
   };
   const deleteAllTodo = () => {
-    dispatch({ type: actionTypeReducerTodo.DELETE_ALL_TODO });
+    dispatch(deleteAllTodoList());
   };
   return (
     <DivStyle>
